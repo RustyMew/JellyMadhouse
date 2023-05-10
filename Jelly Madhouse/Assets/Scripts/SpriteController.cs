@@ -20,11 +20,11 @@ public class SpriteController : MonoBehaviour
 		{
 			faceIndex = 0;
 		}
-		else if (GameManager.pets >= 5 && GameManager.pets < 10)
+		else if (GameManager.pets >= 5 && GameManager.pets < 15)
 		{
 			faceIndex = 1;
 		}
-		else if (GameManager.pets >= 10)
+		else if (GameManager.pets >= 15)
 		{
 			faceIndex = 2;
 		}

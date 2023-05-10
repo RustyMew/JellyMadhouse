@@ -50,6 +50,12 @@ public class GameManager : MonoBehaviour
 		
 		if(game1IsGoing)
 		{
+			if(Input.GetKeyDown(KeyCode.Space))
+			{
+				pets++;
+				Debug.Log("pets: " + pets);
+			}
+			
 			if(pets >= 5)
 			{
 				gameIsWon = true;
@@ -69,13 +75,8 @@ public class GameManager : MonoBehaviour
 		
 		if(gameIsGoing && gameTime <= 0.0f && gameIsWon)
 		{
-			StartCoroutine(EndGameFail());
+			StartCoroutine(EndGameWin());
 		}
-	}
-	
-	void OnMouseDown()
-	{
-		Debug.Log("Click");
 	}
 	
 	IEnumerator NextGame()
@@ -91,6 +92,8 @@ public class GameManager : MonoBehaviour
 		betweenGames.SetActive(false);
 		placeYourPets.SetActive(true);
 		gameTime = 5.0f;
+		pets = 0;
+		gameIsWon = false;
 		game1IsGoing = true;
 		gameIsGoing = true;
 		commandText.text = "";
@@ -111,6 +114,24 @@ public class GameManager : MonoBehaviour
 		commandText.text = "Too bad...";
 		audio.PlayOneShot(end);
 		audio.PlayOneShot(wrong);
+		yield return new WaitForSeconds(2);
+		StartCoroutine(NextGame());
+	}
+	
+	IEnumerator EndGameWin()
+	{
+		if(selectedGame == 1)
+		{
+			game1IsGoing = false;
+			placeYourPets.SetActive(false);
+		}
+		
+		gameIsGoing = false;
+		betweenGames.SetActive(true);
+		timeLeft.text = "";
+		commandText.text = "OK!";
+		audio.PlayOneShot(end);
+		audio.PlayOneShot(correct);
 		yield return new WaitForSeconds(2);
 		StartCoroutine(NextGame());
 	}
