@@ -545,13 +545,11 @@ MonoBehaviour:
   wrong: {fileID: 8300000, guid: 2fc73ca4a6a3bc644bf3e1a42cc41057, type: 3}
   betweenGames: {fileID: 278210048}
   gameTime: 0
-  gameIsGoing: 0
   gameIsWon: 0
   game1IsGoing: 0
   selectedGame: 0
   commandText: {fileID: 1870733593}
   placeYourPets: {fileID: 330970728}
-  pets: 0
   SadSlime: {fileID: 1824166352}
   isHappy: 0
 --- !u!4 &326972671
@@ -577,7 +575,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 330970729}
-  - component: {fileID: 330970730}
   m_Layer: 0
   m_Name: Game1
   m_TagString: Untagged
@@ -600,18 +597,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &330970730
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 330970728}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: adc3f7f5b2ae8314dad34bf9874c312a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &384683535
 GameObject:
   m_ObjectHideFlags: 0
@@ -1379,9 +1364,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1824166353}
   - component: {fileID: 1824166354}
+  - component: {fileID: 1824166355}
+  - component: {fileID: 1824166356}
   m_Layer: 0
   m_Name: SadSlime
-  m_TagString: Untagged
+  m_TagString: Sad
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1451,6 +1438,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1824166355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1824166352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a4f1c7fb90e5541a206a54e912858a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expressions:
+  - {fileID: 21300000, guid: 506ac342c3efaef40a355443198d6fc4, type: 3}
+  - {fileID: 21300000, guid: cc1d8b4aa512a4443b24c82d0de2741a, type: 3}
+  - {fileID: 21300000, guid: 92c0defa67c10c3478876e747d983082, type: 3}
+  spriteRenderer: {fileID: 0}
+  faceIndex: 0
+--- !u!114 &1824166356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1824166352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ed2a50513c85394a97f866f0e1268d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1870733592
 GameObject:
   m_ObjectHideFlags: 0

@@ -16,14 +16,14 @@ public class GameManager : MonoBehaviour
 	public AudioClip wrong;
 	public GameObject betweenGames;
 	public float gameTime;
-	public bool gameIsGoing;
+	public static bool gameIsGoing;
 	public bool gameIsWon;
 	public bool game1IsGoing;
 	[SerializeField] private int selectedGame;
 	[SerializeField] private TextMeshProUGUI commandText;
 	
 	public GameObject placeYourPets;
-	public int pets;	
+	public static int pets;	
 	public GameObject SadSlime;
 	public bool isHappy;
 	
@@ -48,6 +48,15 @@ public class GameManager : MonoBehaviour
 		microNumber.text = currentMicrogame.ToString();
 		}
 		
+		if(game1IsGoing)
+		{
+			if(pets >= 5)
+			{
+				gameIsWon = true;
+				Debug.Log("You did it!");
+			}
+		}
+		
 		if(gameIsGoing && gameTime > 0.0f)
 		{
 			gameTime -= Time.deltaTime;
@@ -57,6 +66,16 @@ public class GameManager : MonoBehaviour
 		{
 			StartCoroutine(EndGameFail());
 		}
+		
+		if(gameIsGoing && gameTime <= 0.0f && gameIsWon)
+		{
+			StartCoroutine(EndGameFail());
+		}
+	}
+	
+	void OnMouseDown()
+	{
+		Debug.Log("Click");
 	}
 	
 	IEnumerator NextGame()
@@ -74,7 +93,6 @@ public class GameManager : MonoBehaviour
 		gameTime = 5.0f;
 		game1IsGoing = true;
 		gameIsGoing = true;
-		Debug.Log("Place your Pets");
 		commandText.text = "";
 		}
 	}
@@ -95,5 +113,5 @@ public class GameManager : MonoBehaviour
 		audio.PlayOneShot(wrong);
 		yield return new WaitForSeconds(2);
 		StartCoroutine(NextGame());
-	}	
+	}
 }
