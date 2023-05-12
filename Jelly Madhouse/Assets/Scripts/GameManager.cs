@@ -28,7 +28,9 @@ public class GameManager : MonoBehaviour
 	public GameObject placeYourPets;
 	public static int pets;	
 	public GameObject SadSlime;
-	public bool isHappy;
+	
+	public GameObject trivia;
+	public bool isCorrect;
 	
 	void Start()
 	{
@@ -103,9 +105,25 @@ public class GameManager : MonoBehaviour
 		}
 	}
 	
+	public void Game2Answer()
+	{
+		isCorrect = true;
+	}
+	
+	public void answered()
+	{
+		if(game2IsGoing)
+		{
+			if(isCorrect)
+			{
+				gameIsWon = true;
+			}
+		}
+	}
+	
 	IEnumerator NextGame()
 	{
-		selectedGame = 0;
+		selectedGame = Random.Range(0, 2);
 		
 		if(selectedGame == 0)
 		{
@@ -123,18 +141,21 @@ public class GameManager : MonoBehaviour
 		commandText.text = "";
 		}
 		
-		/* if(selectedGame == 1)
+		if(selectedGame == 1)
 		{
-		commandText.text = "Make 4!";
+		commandText.text = "Click if Yes!";
 		currentMicrogame += 1;
 		audio.PlayOneShot(start);
 		yield return new WaitForSeconds(2);
+		betweenGames.SetActive(false);
+		trivia.SetActive(true);
+		gameTime = 5.0f;
+		Game2Answer();
 		gameIsWon = false;
 		game2IsGoing = true;
 		gameIsGoing = true;
 		commandText.text = "";
-		SceneManager.LoadScene("JellyConnect4");
-		} */
+		}
 	}
 	
 	IEnumerator EndGameFail()
@@ -143,6 +164,12 @@ public class GameManager : MonoBehaviour
 		{
 			game1IsGoing = false;
 			placeYourPets.SetActive(false);
+		}
+		
+		if(selectedGame == 1)
+		{
+			game2IsGoing = false;
+			trivia.SetActive(false);
 		}
 		
 		gameIsGoing = false;
@@ -169,6 +196,12 @@ public class GameManager : MonoBehaviour
 		{
 			game1IsGoing = false;
 			placeYourPets.SetActive(false);
+		}
+		
+		if(selectedGame == 1)
+		{
+			game2IsGoing = false;
+			trivia.SetActive(false);
 		}
 		
 		gameIsGoing = false;

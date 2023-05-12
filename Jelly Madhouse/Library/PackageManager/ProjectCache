@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638191695996117557
-    m_Hash: 447771862
+      ticks: 638195039552898186
+    m_Hash: 225883939
   m_LockFileStatus:
     m_FilePath: C:/Users/pjpia/Documents/GitHub/JellyMadhouse/Jelly Madhouse/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638191696032315607
-    m_Hash: 2969975552
+      ticks: 638195039552910043
+    m_Hash: 3174864239
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_PackageAssets:
@@ -136,6 +136,7 @@ m_PackageAssets:
         - 7.0.8
         - 7.0.9
         - 7.0.10
+        - 7.0.11
         - 8.0.0-pre.3
         - 8.0.0-pre.4
         - 8.0.0
