@@ -536,13 +536,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentMicrogame: 0
+  lives: 0
+  livesIcons:
+  - {fileID: 317103538}
+  - {fileID: 1327601241}
+  - {fileID: 640076957}
+  - {fileID: 603030535}
   microNumber: {fileID: 15325297}
   timeLeft: {fileID: 18287375}
   audio: {fileID: 1808472532}
-  start: {fileID: 8300000, guid: c76cb79dc42253d44ae236fc2b1dcfdc, type: 3}
-  end: {fileID: 8300000, guid: 8f2cfc380e915834bb5eb24415e421a5, type: 3}
-  correct: {fileID: 8300000, guid: 01e4814186a3116469551649396d851e, type: 3}
-  wrong: {fileID: 8300000, guid: 2fc73ca4a6a3bc644bf3e1a42cc41057, type: 3}
+  start: {fileID: 8300000, guid: 64e3d7dc21c0ae04cadc17af6f6fdfbe, type: 3}
+  end: {fileID: 8300000, guid: c831a33caccdaef4eaee47ded8cbcc51, type: 3}
+  endBad: {fileID: 8300000, guid: fa9e8c574fd35f44ea290c01b90568e5, type: 3}
+  gameover: {fileID: 8300000, guid: a579480baef881a49ad55f2d2dad0afc, type: 3}
   betweenGames: {fileID: 278210048}
   gameTime: 0
   gameIsWon: 0

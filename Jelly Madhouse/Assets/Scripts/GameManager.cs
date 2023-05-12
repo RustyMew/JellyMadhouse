@@ -7,18 +7,21 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     public int currentMicrogame = 0;
+	public int lives;
+	public GameObject[] livesIcons; 
 	public TextMeshProUGUI microNumber;
 	public TextMeshProUGUI timeLeft;
 	public AudioSource audio;
 	public AudioClip start;
 	public AudioClip end;
-	public AudioClip correct;
-	public AudioClip wrong;
+	public AudioClip endBad;
+	public AudioClip gameover;
 	public GameObject betweenGames;
 	public float gameTime;
 	public static bool gameIsGoing;
 	public bool gameIsWon;
 	public bool game1IsGoing;
+	public static bool game2IsGoing;
 	[SerializeField] private int selectedGame;
 	[SerializeField] private TextMeshProUGUI commandText;
 	
@@ -29,6 +32,7 @@ public class GameManager : MonoBehaviour
 	
 	void Start()
 	{
+		lives = 4;
 		StartCoroutine(NextGame());
 		game1IsGoing = false;
 	}
@@ -46,6 +50,26 @@ public class GameManager : MonoBehaviour
 		else if(currentMicrogame > 99)
 		{
 		microNumber.text = currentMicrogame.ToString();
+		}
+		
+		if(lives == 3)
+		{
+			livesIcons[3].SetActive(false);
+		}
+		
+		if(lives == 2)
+		{
+			livesIcons[2].SetActive(false);
+		}
+		
+		if(lives == 1)
+		{
+			livesIcons[1].SetActive(false);
+		}
+		
+		if(lives == 0)
+		{
+			livesIcons[0].SetActive(false);
 		}
 		
 		if(game1IsGoing)
@@ -81,14 +105,14 @@ public class GameManager : MonoBehaviour
 	
 	IEnumerator NextGame()
 	{
-		selectedGame = 1;
+		selectedGame = 0;
 		
-		if(selectedGame == 1)
+		if(selectedGame == 0)
 		{
 		commandText.text = "Pet!";
 		currentMicrogame += 1;
 		audio.PlayOneShot(start);
-		yield return new WaitForSeconds(2.5f);
+		yield return new WaitForSeconds(2);
 		betweenGames.SetActive(false);
 		placeYourPets.SetActive(true);
 		gameTime = 5.0f;
@@ -98,11 +122,24 @@ public class GameManager : MonoBehaviour
 		gameIsGoing = true;
 		commandText.text = "";
 		}
+		
+		/* if(selectedGame == 1)
+		{
+		commandText.text = "Make 4!";
+		currentMicrogame += 1;
+		audio.PlayOneShot(start);
+		yield return new WaitForSeconds(2);
+		gameIsWon = false;
+		game2IsGoing = true;
+		gameIsGoing = true;
+		commandText.text = "";
+		SceneManager.LoadScene("JellyConnect4");
+		} */
 	}
 	
 	IEnumerator EndGameFail()
 	{
-		if(selectedGame == 1)
+		if(selectedGame == 0)
 		{
 			game1IsGoing = false;
 			placeYourPets.SetActive(false);
@@ -112,15 +149,23 @@ public class GameManager : MonoBehaviour
 		betweenGames.SetActive(true);
 		timeLeft.text = "";
 		commandText.text = "Too bad...";
-		audio.PlayOneShot(end);
-		audio.PlayOneShot(wrong);
-		yield return new WaitForSeconds(2);
+		audio.PlayOneShot(endBad);
+		yield return new WaitForSeconds(1.8f);
+		lives--;
+		
+		if(lives > 0)
+		{
 		StartCoroutine(NextGame());
+		}
+		else if(lives == 0)
+		{
+		StartCoroutine(GameOver());	
+		}
 	}
 	
 	IEnumerator EndGameWin()
 	{
-		if(selectedGame == 1)
+		if(selectedGame == 0)
 		{
 			game1IsGoing = false;
 			placeYourPets.SetActive(false);
@@ -131,8 +176,15 @@ public class GameManager : MonoBehaviour
 		timeLeft.text = "";
 		commandText.text = "OK!";
 		audio.PlayOneShot(end);
-		audio.PlayOneShot(correct);
-		yield return new WaitForSeconds(2);
+		yield return new WaitForSeconds(1.7f);
 		StartCoroutine(NextGame());
+	}
+	
+	IEnumerator GameOver()
+	{
+		commandText.text = "Game Over";
+		audio.PlayOneShot(gameover);
+		yield return new WaitForSeconds(3);
+		SceneManager.LoadScene("Menu");
 	}
 }
