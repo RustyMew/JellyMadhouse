@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
 	public static bool gameIsWon;
 	public bool game1IsGoing;
 	public static bool game2IsGoing;
+	public static bool game3IsGoing;
 	[SerializeField] private int selectedGame;
 	[SerializeField] private TextMeshProUGUI commandText;
 	
@@ -35,6 +36,8 @@ public class GameManager : MonoBehaviour
 	public static bool isCorrect;
 	public GameObject button;
 	public int question;
+	
+	public GameObject munchMunch;
 	
 	void Start()
 	{
@@ -89,7 +92,6 @@ public class GameManager : MonoBehaviour
 			if(pets >= 5)
 			{
 				gameIsWon = true;
-				Debug.Log("You did it!");
 			}
 		}
 		
@@ -192,7 +194,7 @@ public class GameManager : MonoBehaviour
 	
 	IEnumerator NextGame()
 	{
-		selectedGame = Random.Range(0, 2);
+		selectedGame = Random.Range(0, 3);
 		
 		if(selectedGame == 0)
 		{
@@ -202,7 +204,7 @@ public class GameManager : MonoBehaviour
 		yield return new WaitForSeconds(2);
 		betweenGames.SetActive(false);
 		placeYourPets.SetActive(true);
-		gameTime = 5.0f;
+		gameTime = 3.0f;
 		pets = 0;
 		gameIsWon = false;
 		game1IsGoing = true;
@@ -219,10 +221,25 @@ public class GameManager : MonoBehaviour
 		betweenGames.SetActive(false);
 		trivia.SetActive(true);
 		button.SetActive(true);
-		gameTime = 5.0f;
+		gameTime = 3.0f;
 		Game2Answer();
 		gameIsWon = false;
 		game2IsGoing = true;
+		gameIsGoing = true;
+		commandText.text = "";
+		}
+		
+		if(selectedGame == 2)
+		{
+		commandText.text = "Eat!";
+		currentMicrogame += 1;
+		audio.PlayOneShot(start);
+		yield return new WaitForSeconds(2);
+		betweenGames.SetActive(false);
+		munchMunch.SetActive(true);
+		gameTime = 3.0f;
+		gameIsWon = false;
+		game3IsGoing = true;
 		gameIsGoing = true;
 		commandText.text = "";
 		}
@@ -240,6 +257,12 @@ public class GameManager : MonoBehaviour
 		{
 			game2IsGoing = false;
 			trivia.SetActive(false);
+		}
+		
+		if(selectedGame == 2)
+		{
+			game3IsGoing = false;
+			munchMunch.SetActive(false);
 		}
 		
 		gameIsGoing = false;
@@ -272,6 +295,12 @@ public class GameManager : MonoBehaviour
 		{
 			game2IsGoing = false;
 			trivia.SetActive(false);
+		}
+		
+		if(selectedGame == 2)
+		{
+			game3IsGoing = false;
+			munchMunch.SetActive(false);
 		}
 		
 		gameIsGoing = false;
