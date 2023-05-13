@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
 	public GameObject betweenGames;
 	public float gameTime;
 	public static bool gameIsGoing;
-	public bool gameIsWon;
+	public static bool gameIsWon;
 	public bool game1IsGoing;
 	public static bool game2IsGoing;
 	[SerializeField] private int selectedGame;
@@ -30,7 +30,11 @@ public class GameManager : MonoBehaviour
 	public GameObject SadSlime;
 	
 	public GameObject trivia;
-	public bool isCorrect;
+	public TextMeshProUGUI ask;
+	public static bool incorrect;
+	public static bool isCorrect;
+	public GameObject button;
+	public int question;
 	
 	void Start()
 	{
@@ -94,29 +98,94 @@ public class GameManager : MonoBehaviour
 			gameTime -= Time.deltaTime;
 			timeLeft.text = gameTime.ToString("f2");
 		}
-		if(gameIsGoing && gameTime <= 0.0f && !gameIsWon)
+		
+		if(!game2IsGoing)
 		{
-			StartCoroutine(EndGameFail());
+			if(gameIsGoing && gameTime <= 0.0f && !gameIsWon)
+			{
+				StartCoroutine(EndGameFail());
+			}
+		
+			if(gameIsGoing && gameTime <= 0.0f && gameIsWon)
+			{
+				StartCoroutine(EndGameWin());
+			}
 		}
 		
-		if(gameIsGoing && gameTime <= 0.0f && gameIsWon)
+		if(game2IsGoing)
 		{
-			StartCoroutine(EndGameWin());
+			if(gameTime <= 0.0f && isCorrect && !gameIsWon)
+			{
+				StartCoroutine(EndGameFail());
+			}
+		
+			if(gameTime <= 0.0f && isCorrect && gameIsWon)
+			{
+				StartCoroutine(EndGameWin());
+			}
+		
+			if(gameTime <= 0.0f && !isCorrect && incorrect)
+			{
+				StartCoroutine(EndGameFail());
+			}
+		
+			if(gameTime <= 0.0f && !isCorrect && !incorrect)
+			{
+				StartCoroutine(EndGameWin());
+			}
 		}
 	}
 	
 	public void Game2Answer()
 	{
-		isCorrect = true;
+		incorrect = false;
+		question = Random.Range(0, 5);
+		
+		if(question == 0)
+		{
+			ask.text = "Is Pluto still considered a planet?";
+			isCorrect = false;
+		}
+		
+		if(question == 1)
+		{
+			ask.text = "Did Peter Piper pick a peck of pickled peppers?";
+			isCorrect = true;
+		}
+		
+		if(question == 2)
+		{
+			ask.text = "Did you pay money for this game?";
+			isCorrect = false;
+		}
+		
+		if(question == 3)
+		{
+			ask.text = "Chimken Nuggt?";
+			isCorrect = true;
+		}
+		
+		if(question == 4)
+		{
+			ask.text = "Is this statement false?";
+			isCorrect = false;
+		}
 	}
 	
 	public void answered()
 	{
+		button.SetActive(false);
+		
 		if(game2IsGoing)
 		{
 			if(isCorrect)
 			{
 				gameIsWon = true;
+			}
+			
+			if(!isCorrect)
+			{
+				incorrect = true;
 			}
 		}
 	}
@@ -149,6 +218,7 @@ public class GameManager : MonoBehaviour
 		yield return new WaitForSeconds(2);
 		betweenGames.SetActive(false);
 		trivia.SetActive(true);
+		button.SetActive(true);
 		gameTime = 5.0f;
 		Game2Answer();
 		gameIsWon = false;

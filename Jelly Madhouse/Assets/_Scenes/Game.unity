@@ -685,14 +685,15 @@ MonoBehaviour:
   gameover: {fileID: 8300000, guid: a579480baef881a49ad55f2d2dad0afc, type: 3}
   betweenGames: {fileID: 278210048}
   gameTime: 0
-  gameIsWon: 0
   game1IsGoing: 0
   selectedGame: 0
   commandText: {fileID: 1870733593}
   placeYourPets: {fileID: 330970728}
   SadSlime: {fileID: 1824166352}
   trivia: {fileID: 2103101738}
-  isCorrect: 0
+  ask: {fileID: 323277074}
+  button: {fileID: 2078552367}
+  question: 0
 --- !u!4 &326972671
 Transform:
   m_ObjectHideFlags: 0
@@ -749,6 +750,7 @@ GameObject:
   m_Component:
   - component: {fileID: 347040737}
   - component: {fileID: 347040738}
+  - component: {fileID: 347040739}
   m_Layer: 0
   m_Name: Contestant
   m_TagString: Untagged
@@ -810,7 +812,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: cc1d8b4aa512a4443b24c82d0de2741a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f01d4b564e11e134f9af278d04f01bab, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -821,6 +823,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &347040739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 347040736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcc2df10233d6a2408cc42336ce19663, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expressions:
+  - {fileID: 21300000, guid: f01d4b564e11e134f9af278d04f01bab, type: 3}
+  - {fileID: 21300000, guid: 7e53c617a5ae5a64cbb30cde40ba1979, type: 3}
+  - {fileID: 21300000, guid: c5900562b6b316c44ac2a479c6214233, type: 3}
+  spriteRenderer: {fileID: 0}
+  faceIndex: 0
 --- !u!1 &368300853
 GameObject:
   m_ObjectHideFlags: 0
