@@ -39,6 +39,7 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.CanvasScaler
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
+    - UnityEngine.UI.RawImage
   sceneClasses:
     Assets/Hyperspace System's Microgames/Scenes/JellyConnect4.unity:
     - Class: 1
@@ -97,25 +98,25 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1872}
     - Class: 114
-      Script: {instanceID: 2730}
+      Script: {instanceID: 2738}
     - Class: 114
-      Script: {instanceID: 2880}
+      Script: {instanceID: 2890}
     - Class: 114
-      Script: {instanceID: 2908}
+      Script: {instanceID: 2918}
     - Class: 114
-      Script: {instanceID: 2958}
+      Script: {instanceID: 2968}
     - Class: 114
-      Script: {instanceID: 3146}
+      Script: {instanceID: 3156}
     - Class: 114
-      Script: {instanceID: 3398}
+      Script: {instanceID: 3408}
     - Class: 114
-      Script: {instanceID: 3528}
+      Script: {instanceID: 3538}
     - Class: 114
-      Script: {instanceID: 4212}
+      Script: {instanceID: 4222}
     - Class: 114
-      Script: {instanceID: 4688}
+      Script: {instanceID: 4702}
     - Class: 114
-      Script: {instanceID: 4736}
+      Script: {instanceID: 4750}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -158,27 +159,29 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1872}
     - Class: 114
-      Script: {instanceID: 2066}
+      Script: {instanceID: 2072}
     - Class: 114
-      Script: {instanceID: 2284}
+      Script: {instanceID: 2292}
     - Class: 114
-      Script: {instanceID: 2730}
+      Script: {instanceID: 2480}
     - Class: 114
-      Script: {instanceID: 2908}
+      Script: {instanceID: 2738}
     - Class: 114
-      Script: {instanceID: 2958}
+      Script: {instanceID: 2918}
     - Class: 114
-      Script: {instanceID: 3146}
+      Script: {instanceID: 2968}
     - Class: 114
-      Script: {instanceID: 3398}
+      Script: {instanceID: 3156}
     - Class: 114
-      Script: {instanceID: 3528}
+      Script: {instanceID: 3408}
     - Class: 114
-      Script: {instanceID: 4794}
+      Script: {instanceID: 3538}
     - Class: 114
-      Script: {instanceID: 4956}
+      Script: {instanceID: 4810}
     - Class: 114
-      Script: {instanceID: 5362}
+      Script: {instanceID: 4972}
+    - Class: 114
+      Script: {instanceID: 5378}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -186,8 +189,6 @@ ScriptsOnlyBuild:
     - Class: 157
       Script: {instanceID: 0}
     - Class: 196
-      Script: {instanceID: 0}
-    - Class: 212
       Script: {instanceID: 0}
     - Class: 213
       Script: {instanceID: 0}
@@ -953,5 +954,4 @@ ScriptsOnlyBuild:
   - Assets/_Scenes/Menu.unity
   - Assets/_Scenes/Game.unity
   - Assets/Hyperspace System's Microgames/Scenes/JellyConnect4.unity
-  playerPath: C:/Users/pjpia/Documents/GitHub/JellyMadhouse/Jelly Madhouse/Builds/Jelly
-    Madhouse.exe
+  playerPath: C:/Users/pjpia/Desktop/Jelly Madhouse.exe
